@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Основные данные проекта -->
+    <groupId>com.example</groupId>
+    <artifactId>cryptopay</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>Crypto Pay Java Library</name>
+    <description>Библиотека для работы с Crypto Pay API на Java, поддерживающая работу с инвойсами, переводами, чеками, балансами и Webhook-обновлениями.</description>
+    <url>https://github.com/kkfes/cryptopay</url>
+
+    <!-- Лицензия -->
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- Разработчики -->
+    <developers>
+        <developer>
+            <id>kkfes</id>
+            <name>Human</name>
+            <email>mme84855@gmail.com</email>
+        </developer>
+    </developers>
+
+    <!-- Репозитории (если необходимо) -->
+    <distributionManagement>
+        <repository>
+            <id>ossrh</id>
+            <name>OSSRH Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>ossrh-snapshots</id>
+            <name>OSSRH Snapshot Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- Зависимости -->
+    <dependencies>
+        <!-- Jackson Databind для (де)сериализации JSON -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.14.0</version>
+        </dependency>
+
+        <!-- При необходимости укажите другие зависимости (например, для логирования) -->
+    </dependencies>
+
+    <!-- Плагины для сборки, подписи и выпуска (если требуется публикация в репозиторий) -->
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Source Plugin для включения исходников в артефакт -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven Javadoc Plugin для генерации javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven GPG Plugin (если требуется подпись артефакта при публикации) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.0.1</version>
+            </plugin>
+
+            <!-- Maven Deploy Plugin для публикации в удаленный репозиторий -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0-M1</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
