@@ -22,7 +22,7 @@ public class CryptoPayClient {
 
     public CryptoPayClient(String apiToken, boolean useTestServer) {
         this.apiToken = apiToken;
-        this.baseUrl = useTestServer ? "https://test-pay.crypt.bot/api" : "https://pay.crypt.bot/api";
+        this.baseUrl = useTestServer ? "https://testnet-pay.crypt.bot/api" : "https://pay.crypt.bot/api";
         this.httpClient = HttpClient.newHttpClient();
         this.objectMapper = new ObjectMapper();
     }
