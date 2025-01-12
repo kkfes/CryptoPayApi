@@ -33,30 +33,33 @@
         </developer>
     </developers>
 
-    <!-- Репозитории (если необходимо) -->
-    <distributionManagement>
-        <repository>
-            <id>ossrh</id>
-            <name>OSSRH Release Repository</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-        <snapshotRepository>
-            <id>ossrh-snapshots</id>
-            <name>OSSRH Snapshot Repository</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <!-- Зависимости -->
     <dependencies>
-        <!-- Jackson Databind для (де)сериализации JSON -->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.14.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.14.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.14.0</version>
         </dependency>
 
-        <!-- При необходимости укажите другие зависимости (например, для логирования) -->
+        <!-- https://mvnrepository.com/artifact/com.sparkjava/spark-core -->
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-core</artifactId>
+            <version>2.9.4</version>
+        </dependency>
     </dependencies>
 
     <!-- Плагины для сборки, подписи и выпуска (если требуется публикация в репозиторий) -->
