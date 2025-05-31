@@ -122,6 +122,36 @@ public class CryptoPayClient {
         return parseResponse(response, new TypeReference<GetChecksResponse>() {});
     }
 
+    public CreateCheckResponse createCheck(CreateCheckRequest createCheckRequest)
+            throws IOException, InterruptedException {
+        String requestBody = objectMapper.writeValueAsString(createCheckRequest);
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseUrl + "/createCheck"))
+                .header("Crypto-Pay-API-Token", apiToken)
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        return parseResponse(response, new TypeReference<CreateCheckResponse>() {
+        });
+    }
+
+    public DeleteCheckResponse deleteCheck(long checkId)
+            throws IOException, InterruptedException {
+        DeleteCheckRequest body = new DeleteCheckRequest(checkId);
+        String requestBody = objectMapper.writeValueAsString(body);
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(baseUrl + "/deleteCheck"))
+                .header("Crypto-Pay-API-Token", apiToken)
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        return parseResponse(response, new TypeReference<DeleteCheckResponse>() {
+        });
+    }
+
+
     public GetBalanceResponse getBalance() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(baseUrl + "/getBalance"))
