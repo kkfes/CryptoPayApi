@@ -18,16 +18,41 @@
 
 ## Установка
 
-Подключите библиотеку к своему проекту (например, через Maven или Gradle). Не забудьте добавить зависимость от [Jackson Databind](https://github.com/FasterXML/jackson-databind).
+[![](https://jitpack.io/v/kkfes/CryptoPayApi.svg)](https://jitpack.io/#kkfes/CryptoPayApi)
 
-Пример для Maven:
+### 🔹 Maven
+Добавьте в pom.xml:
+
 ```xml
+
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
+<dependencies>
 <dependency>
-  <groupId>com.fasterxml.jackson.core</groupId>
-  <artifactId>jackson-databind</artifactId>
-  <version>2.14.0</version>
+  <groupId>com.github.kkfes</groupId>
+  <artifactId>CryptoPayApi</artifactId>
+  <version><!-- см. версию в бейдже выше --></version> <!-- замените TAG на нужный релиз, например: 2.0 -->
 </dependency>
+</dependencies>
 ```
+
+### 🔹 Gradle (Groovy DSL)
+```groovy
+repositories {
+  maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+  implementation 'com.github.kkfes:CryptoPayApi:<версия из бейджа>' // замените TAG на нужный релиз
+}
+```
+
+
 
 ## Быстрый старт
 ### Инициализация клиента
