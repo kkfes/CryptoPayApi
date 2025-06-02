@@ -170,7 +170,15 @@ checkRequest.setPinToUsername("someusername");
 try {
     CreateCheckResponse checkResponse = client.createCheck(checkRequest);
     if (checkResponse.isOk()) {
-        System.out.println("Чек создан, ID = " + checkResponse.getResult().getCheckId());
+        System.out.println(
+                "Check created successfully! Check ID: " + checkResponse.getResult().getCheckId() +
+        ", Hash: " + checkResponse.getResult().getHash() +
+        ", Amount: " + checkResponse.getResult().getAmount() +
+        ", Asset: " + checkResponse.getResult().getAsset() +
+        ", Bot Check URL: " + checkResponse.getResult().getBot_check_url() +
+        ", Status: " + checkResponse.getResult().getStatus() +
+        ", Created At: " + checkResponse.getResult().getCreated_at() +
+        ", Activated At: " + checkResponse.getResult().getActivated_at());
     }
 } catch (Exception e) {
     e.printStackTrace();
@@ -196,10 +204,19 @@ getChecksRequest.setStatus("active");
 try {
     GetChecksResponse checksResponse = client.getChecks(getChecksRequest);
     if (checksResponse.isOk()) {
-        for (Check check : checksResponse.getResult()) {
-            System.out.println("Check ID: " + check.getCheckId() + ", Status: " + check.getStatus());
+        for (Check check : checksResponse.getResult().getItems()) {
+            System.out.println("Check ID: " + check.getCheckId() +
+        ", Hash: " + check.getHash() +
+        ", Asset: " + check.getAsset() +
+        ", Amount: " + check.getAmount() +
+        ", Bot Check URL: " + check.getBot_check_url() +
+        ", Status: " + check.getStatus() +
+        ", Created At: " + check.getCreated_at() +
+        ", Activated At: " + check.getActivated_at());
         }
+    
     }
+
 } catch (Exception e) {
     e.printStackTrace();
 }

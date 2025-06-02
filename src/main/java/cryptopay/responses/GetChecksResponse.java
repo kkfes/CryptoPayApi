@@ -10,7 +10,7 @@ public class GetChecksResponse {
     @JsonProperty("ok")
     private boolean ok;
     @JsonProperty("result")
-    private List<Check> result;
+    private Result result;
 
     public boolean isOk() {
         return ok;
@@ -18,10 +18,24 @@ public class GetChecksResponse {
     public void setOk(boolean ok) {
         this.ok = ok;
     }
-    public List<Check> getResult() {
+    public Result getResult() {
         return result;
     }
-    public void setResult(List<Check> result) {
+    public void setResult(Result result) {
         this.result = result;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Result {
+        @JsonProperty("items")
+        private List<Check> items;
+
+        public List<Check> getItems() {
+            return items;
+        }
+
+        public void setItems(List<Check> items) {
+            this.items = items;
+        }
     }
 }
