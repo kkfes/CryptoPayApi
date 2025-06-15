@@ -80,17 +80,28 @@ try {
 ## Работа с инвойсами
 ### Создание инвойса
 ```java
-CreateInvoiceRequest createInvoiceRequest = new CreateInvoiceRequest("TON", 12.34);
+CreateInvoiceRequest createInvoiceRequest = CreateInvoiceRequest.builder()
+                .asset("USDT") // Укажите валюту, например, USDT
+                .amount("100.00") // Укажите сумму инвойса
+                .description("Оплата за услуги") // Описание инвойса
+                .hiddenMessage("Скрытое сообщение для клиента") // Скрытое сообщение
+                .paidBtnName("Оплатить") // Текст кнопки оплаты
+                .paidBtnUrl("https://example.com/pay") // URL для кнопки оплаты
+                .payload("some_payload_data") // Дополнительные данные
+                .allowComments(true) // Разрешить комментарии
+                .allowAnonymous(false) // Запретить анонимные платежи
+                .expiresIn(3600) // Время жизни инвойса в секундах (1 час)
+                .build();
 try {
-    CreateInvoiceResponse invoiceResponse = client.createInvoice(createInvoiceRequest);
-    if (invoiceResponse.isOk()) {
-        Invoice createdInvoice = invoiceResponse.getResult();
-        System.out.println("Создан инвойс, ID = " + createdInvoice.getInvoiceId());
-    } else {
-        System.err.println("Ошибка при создании инвойса!");
-    }
+  CreateInvoiceResponse invoiceResponse = client.createInvoice(createInvoiceRequest);
+  if (invoiceResponse.isOk()) {
+    Invoice createdInvoice = invoiceResponse.getResult();
+    System.out.println("Создан инвойс, ID = " + createdInvoice.getInvoiceId());
+  } else {
+    System.err.println("Ошибка при создании инвойса!");
+  }
 } catch (Exception e) {
-    e.printStackTrace();
+  e.printStackTrace();
 }
 ```
 ### Получение инвойсов
